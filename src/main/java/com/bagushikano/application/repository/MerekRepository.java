@@ -1,8 +1,6 @@
 package com.bagushikano.application.repository;
 
-import com.bagushikano.application.models.merek.MerekDetailResponse;
-import com.bagushikano.application.models.merek.MerekGetResponse;
-import com.bagushikano.application.models.merek.MerekProduk;
+import com.bagushikano.application.models.merek.*;
 import com.bagushikano.application.services.MerekClient;
 import org.springframework.web.client.HttpClientErrorException;
 
@@ -15,6 +13,15 @@ public class MerekRepository {
         MerekGetResponse merekGetResponse = merekClient.getALlMerek();
         if (merekGetResponse.status()) {
             return (ArrayList<MerekProduk>) merekGetResponse.merekProdukList();
+        } else {
+            return null;
+        }
+    }
+
+    public MerekPaginated getMerekPaginated(String page) {
+        MerkGetPaginatedResponse merkGetPaginatedResponse = merekClient.getMerekPaginated(page);
+        if (merkGetPaginatedResponse.status()) {
+            return merkGetPaginatedResponse.merekProdukList();
         } else {
             return null;
         }

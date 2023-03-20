@@ -7,6 +7,7 @@ import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.confirmdialog.ConfirmDialog;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.notification.Notification;
@@ -28,6 +29,7 @@ public class DetailMerekView extends VerticalLayout implements HasUrlParameter<S
     private MerekRepository merekRepository = new MerekRepository();
     private MerekProduk merekProduk;
     private String idMerekProduk;
+    ConfirmDialog dialog = new ConfirmDialog();
 
     public DetailMerekView() {
 
@@ -60,9 +62,19 @@ public class DetailMerekView extends VerticalLayout implements HasUrlParameter<S
                 deleteData(idMerekProduk);
             }
         });
+        dialog.setHeader("Hapus data?");
+        dialog.setText(
+                "Yakin ingin menyimpan data?");
+        dialog.setCancelable(true);
+        dialog.setConfirmText("Simpan");
+        dialog.addConfirmListener(event ->  submitData(namaMerekField.getValue(), keteranganMerekField.getValue(), idMerekProduk));
+
+
         add(pageTitle, namaMerekField, keteranganMerekField, submitDataButton, progressBar, deleteDataButton);
         getDetailmerek();
     }
+
+
 
     public void getDetailmerek() {
         hideForm();

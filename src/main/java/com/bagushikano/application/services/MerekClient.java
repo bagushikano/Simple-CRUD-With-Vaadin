@@ -3,6 +3,7 @@ package com.bagushikano.application.services;
 import com.bagushikano.application.models.merek.MerekDetailResponse;
 import com.bagushikano.application.models.merek.MerekGetResponse;
 import com.bagushikano.application.models.merek.MerekProdukCreateRequest;
+import com.bagushikano.application.models.merek.MerkGetPaginatedResponse;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,19 @@ public class MerekClient {
         ResponseEntity<MerekGetResponse> response = restTemplate.exchange(request, MerekGetResponse.class);
         return response.getBody();
     }
+
+    public MerkGetPaginatedResponse getMerekPaginated(String page) {
+        String url = String.format("%s%s%s%s", Const.BASE_URL, "/api/merek/get/paginated", "?page=", page);
+
+        RestTemplate restTemplate = new RestTemplate();
+        RequestEntity<Void> request = RequestEntity
+                .get(url)
+                .accept(MediaType.APPLICATION_JSON)
+                .build();
+        ResponseEntity<MerkGetPaginatedResponse> response = restTemplate.exchange(request, MerkGetPaginatedResponse.class);
+        return response.getBody();
+    }
+
 
     public MerekDetailResponse getDetailMerek(String idMerek) {
         String url = String.format("%s%s%s", Const.BASE_URL, "/api/merek/detail/", idMerek);

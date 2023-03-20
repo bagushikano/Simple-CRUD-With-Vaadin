@@ -4,6 +4,7 @@ package com.bagushikano.application.views;
 import com.bagushikano.application.components.appnav.AppNav;
 import com.bagushikano.application.components.appnav.AppNavItem;
 import com.bagushikano.application.views.simplecrud.merek.MerekView;
+import com.bagushikano.application.views.simplecrud.merek.MerekWithPagination;
 import com.bagushikano.application.views.simplecrud.produk.ProdukView;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
@@ -55,7 +56,7 @@ public class MainLayout extends AppLayout {
 
         nav.addItem(new AppNavItem("Daftar Merek Produk", MerekView.class, "la la-globe"));
         nav.addItem(new AppNavItem("Daftar Produk", ProdukView.class, "la la-file"));
-
+        nav.addItem(new AppNavItem("Merk with Pagination", MerekWithPagination.class, "la la-file"));
         return nav;
     }
 
