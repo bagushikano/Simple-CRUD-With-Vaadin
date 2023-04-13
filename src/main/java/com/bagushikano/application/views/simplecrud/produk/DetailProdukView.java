@@ -29,6 +29,7 @@ import com.vaadin.flow.router.BeforeEvent;
 import com.vaadin.flow.router.HasUrlParameter;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.auth.AnonymousAllowed;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -36,6 +37,7 @@ import java.util.ArrayList;
 
 @PageTitle("Detail Produk")
 @Route(value = "produk/detail", layout = MainLayout.class)
+@AnonymousAllowed
 public class DetailProdukView extends VerticalLayout implements HasUrlParameter<String> {
     private final TextField namaProdukField = new TextField("Nama Produk");
     private final TextArea descProdukField = new TextArea("Keterangan Produk");

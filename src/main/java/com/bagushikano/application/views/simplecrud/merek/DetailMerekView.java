@@ -16,9 +16,11 @@ import com.vaadin.flow.component.progressbar.ProgressBar;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.*;
+import com.vaadin.flow.server.auth.AnonymousAllowed;
 
 @PageTitle("Detail Merek")
 @Route(value = "/merek/detail", layout = MainLayout.class)
+@AnonymousAllowed
 public class DetailMerekView extends VerticalLayout implements HasUrlParameter<String> {
     private final TextField namaMerekField = new TextField("Nama merek");
     private final TextArea keteranganMerekField = new TextArea("Keterangan merek");

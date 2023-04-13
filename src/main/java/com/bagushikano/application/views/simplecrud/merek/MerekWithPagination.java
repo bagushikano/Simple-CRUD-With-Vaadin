@@ -18,11 +18,13 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.progressbar.ProgressBar;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.auth.AnonymousAllowed;
 
 import java.util.ArrayList;
 
 @PageTitle("Daftar Merek Paginated")
 @Route(value = "merek/paginated", layout = MainLayout.class)
+@AnonymousAllowed
 public class MerekWithPagination extends VerticalLayout {
     private ProgressBar progressBar = new ProgressBar();
     private Button createDataButton = new Button();

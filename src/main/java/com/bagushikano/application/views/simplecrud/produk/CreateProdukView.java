@@ -25,6 +25,7 @@ import com.vaadin.flow.component.upload.receivers.FileData;
 import com.vaadin.flow.component.upload.receivers.MemoryBuffer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.auth.AnonymousAllowed;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,6 +33,7 @@ import java.util.ArrayList;
 
 @PageTitle("Create Produk")
 @Route(value = "produk/create", layout = MainLayout.class)
+@AnonymousAllowed
 public class CreateProdukView extends VerticalLayout {
     private final TextField namaProdukField = new TextField("Nama Produk");
     private final TextArea descProdukField = new TextArea("Keterangan Produk");

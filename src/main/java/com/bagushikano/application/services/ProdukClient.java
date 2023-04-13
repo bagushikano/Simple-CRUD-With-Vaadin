@@ -15,6 +15,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class ProdukClient {
     RestTemplate restTemplate = new RestTemplate();
@@ -44,7 +45,7 @@ public class ProdukClient {
 
         String url = Const.BASE_URL + "/api/produk/create";
 
-        ProdukCreateRequest produkCreateRequest = new ProdukCreateRequest(namaProduk, desc, idMerek);
+        ProdukCreateRequest produkCreateRequest = new ProdukCreateRequest(namaProduk, desc, idMerek, new ArrayList<>());
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
@@ -81,7 +82,7 @@ public class ProdukClient {
                                             byte[] produkImage) {
         String url = String.format("%s%s%s", Const.BASE_URL, "/api/produk/update/", idProduk);
 
-        ProdukCreateRequest produkCreateRequest = new ProdukCreateRequest(namaProduk, desc, idMerek);
+        ProdukCreateRequest produkCreateRequest = new ProdukCreateRequest(namaProduk, desc, idMerek, new ArrayList<>());
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);

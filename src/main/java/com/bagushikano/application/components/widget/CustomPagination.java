@@ -13,6 +13,7 @@ public class CustomPagination extends HorizontalLayout {
     Paragraph totalDataText = new Paragraph("");
     TextField currentPage = new TextField();
     TextField goToField = new TextField();
+    TextField pageSizeField = new TextField();
     Button prevButton;
     Button nextButton;
     Button goToButton;
@@ -53,6 +54,8 @@ public class CustomPagination extends HorizontalLayout {
                 goToField.setValue(String.valueOf(totalPage));
             }
         });
+
+        pageSizeField.
 
         setWidthFull();
         addClassName(LumoUtility.JustifyContent.BETWEEN);

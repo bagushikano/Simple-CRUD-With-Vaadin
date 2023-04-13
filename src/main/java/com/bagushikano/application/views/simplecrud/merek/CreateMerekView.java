@@ -18,9 +18,11 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.auth.AnonymousAllowed;
 
 @PageTitle("Create Merek")
 @Route(value = "merek/create", layout = MainLayout.class)
+@AnonymousAllowed
 public class CreateMerekView extends VerticalLayout {
     private final TextField namaMerekField = new TextField("Nama merek");
     private final TextArea keteranganMerekField = new TextArea("Keterangan merek");

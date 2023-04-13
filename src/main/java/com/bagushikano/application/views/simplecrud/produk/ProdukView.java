@@ -10,6 +10,7 @@ import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.ItemClickEvent;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.icon.Icon;
@@ -20,12 +21,12 @@ import com.vaadin.flow.component.progressbar.ProgressBar;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import org.vaadin.klaudeta.PaginatedGrid;
-
+import com.vaadin.flow.server.auth.AnonymousAllowed;
 import java.util.ArrayList;
 
 @PageTitle("Daftar Produk")
 @Route(value = "produk", layout = MainLayout.class)
+@AnonymousAllowed
 public class ProdukView extends VerticalLayout {
     private ProgressBar progressBar = new ProgressBar();
     private Button createDataButton = new Button();
@@ -35,7 +36,7 @@ public class ProdukView extends VerticalLayout {
     private ProdukRepository produkRepository = new ProdukRepository();
     public ProdukView() {
 
-        PaginatedGrid<Produk, ?> grid = new PaginatedGrid<>();
+        Grid<Produk> grid = new Grid<>();
 
         grid.addColumn(Produk::getId).setHeader("ID").setSortable(true);
         grid.addColumn(Produk::getNama_produk).setHeader("Nama Produk").setSortable(true);
@@ -54,7 +55,6 @@ public class ProdukView extends VerticalLayout {
             }
         });
 
-        grid.setPaginatorSize(10);
         grid.setPageSize(5);
 
         progressBar.setWidth("15em");
